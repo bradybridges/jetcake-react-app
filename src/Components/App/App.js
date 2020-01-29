@@ -3,11 +3,17 @@ import './App.scss';
 import { Route, Switch } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import Login from '../Login/Login';
+import * as firebase from 'firebase';
+import ApiKeys from '../../ApiKeys';
 
 class App extends Component {
   state = {
     showLogin: false,
     user: null,
+  }
+
+  componentDidMount = () => {
+    if(!firebase.apps.length) firebase.initializeApp(ApiKeys.FirebaseConfig);
   }
 
   toggleShowLogin = () => {
