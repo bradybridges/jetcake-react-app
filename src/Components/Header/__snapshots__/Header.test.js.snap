@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot 1`] = `
+<header>
+  <h1>
+    Hero Page
+  </h1>
+  <nav>
+    <ul
+      id="nav-ul"
+    >
+      <li
+        className="nav-link"
+      >
+        <Link
+          className="link"
+          to="/login"
+        >
+          Login
+        </Link>
+      </li>
+      <li
+        className="nav-link"
+      >
+        <Link
+          className="link"
+          to="/create"
+        >
+          Create Account
+        </Link>
+      </li>
+      <li
+        className="nav-link"
+      >
+        <Link
+          className="link"
+          to="/profile"
+        >
+          View Profile
+        </Link>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;
