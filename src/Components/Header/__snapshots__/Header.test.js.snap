@@ -2,7 +2,9 @@
 
 exports[`Header should match snapshot 1`] = `
 <header>
-  <h1>
+  <h1
+    id="main-header"
+  >
     Hero Page
   </h1>
   <nav>
@@ -12,12 +14,12 @@ exports[`Header should match snapshot 1`] = `
       <li
         className="nav-link"
       >
-        <Link
+        <span
           className="link"
-          to="/login"
+          onClick={[MockFunction]}
         >
           Login
-        </Link>
+        </span>
       </li>
       <li
         className="nav-link"
@@ -39,6 +41,12 @@ exports[`Header should match snapshot 1`] = `
           View Profile
         </Link>
       </li>
+      <span
+        className="link"
+        onClick={[MockFunction]}
+      >
+        Logout
+      </span>
     </ul>
   </nav>
 </header>
