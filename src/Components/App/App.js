@@ -29,12 +29,16 @@ class App extends Component {
     this.setState({ showLogin: toggledState });
   }
 
+  handleLogout = () => {
+    firebase.auth().signOut();
+  }
+
   render() {
     return (
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Header toggleShowLogin={this.toggleShowLogin} />
+            <Header toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
           </Route>
           <Route path="/create">
