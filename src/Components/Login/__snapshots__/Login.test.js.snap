@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should match the snapshot 1`] = `
+<section
+  className="login-form"
+>
+  <label>
+    Email
+  </label>
+  <input
+    name="email"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label>
+    Password
+  </label>
+  <input
+    name="password"
+    onChange={[Function]}
+    type="password"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    Login
+  </button>
+  <button
+    onClick={[MockFunction]}
+  >
+    Cancel
+  </button>
+</section>
+`;
