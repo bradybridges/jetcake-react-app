@@ -21,7 +21,7 @@ export default class Login extends Component {
       await firebase.auth().signInWithEmailAndPassword(email, password);
       toggleShowLogin();
     } catch(error) {
-      this.setState({ error });
+      this.setState({ error, email: "", password: "" });
       console.error(error);
     }
   }
