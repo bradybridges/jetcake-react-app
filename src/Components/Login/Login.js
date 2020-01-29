@@ -16,12 +16,13 @@ export default class Login extends Component {
 
   handleLogin = async () => {
     const { email, password } = this.state;
+    const { toggleShowLogin } = this.props;
     try {
-      const user = await firebase.auth().signInWithEmailAndPassword(email, password);
-      console.log(user);
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      toggleShowLogin();
     } catch(error) {
       this.setState({ error });
-      console.log(error);
+      console.error(error);
     }
   }
 
