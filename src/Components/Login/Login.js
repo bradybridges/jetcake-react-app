@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import * as firebase from 'firebase';
+import 'firebase/auth';
 
 export default class Login extends Component {
   state = {
     email: "",
     password: "",
+    error: null,
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleLogin = () => {
-
+  handleLogin = async () => {
+    const { email, password } = this.state;
+    try {
+      const user = await firebase.auth().signInWithEmailAndPassword(email, password);
+      console.log(user);
+    } catch(error) {
+      this.setState({ error });
+      console.log(error);
+    }
   }
 
   render() {
     const { toggleShowLogin } = this.props;
+    if(this.state.error) {
+      setTimeout(() => {
+        this.setState({ error: null });
+      }, 2500);
+    }
     return (
       <section className="login-form">
+        {this.state.error && <p id="error-msg">{this.state.error.message}</p>}
         <label>Email</label>
         <input 
           name="email" 
