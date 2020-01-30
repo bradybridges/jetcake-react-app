@@ -36,22 +36,26 @@ export default class Login extends Component {
     return (
       <section className="login-form">
         {this.state.error && <p id="error-msg">{this.state.error.message}</p>}
-        <label>Email</label>
+        <label className="input-label">Email</label>
         <input 
           name="email" 
           type="text" 
           value={this.state.email} 
           onChange={this.handleChange}
+          className="input-field"
         />
-        <label>Password</label>
+        <label className="input-label">Password</label>
         <input 
           name="password" 
           type="password" 
           value={this.state.password} 
           onChange={this.handleChange}
+          className="input-field"
         />
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={toggleShowLogin}>Cancel</button>
+        <section className="form-btn-container">
+          <button className="form-btn" onClick={this.handleLogin}>Login</button>
+          <button className="form-btn" onClick={toggleShowLogin}>Cancel</button>
+        </section>
       </section>
     )
   }
