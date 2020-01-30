@@ -66,10 +66,15 @@ class App extends Component {
     });
   }
 
-  handleUpdateProfile = (profileProperty, value) => {
+  handleUpdateProfile = async (profileProperty, value) => {
     const { profileID } = this.state;
-    firebase.firestore().collection('profiles').doc(profileID)
+    await firebase.firestore().collection('profiles').doc(profileID)
       .update({[profileProperty]: value });
+    const user = await firebase.auth().currentUser;
+    if(profileProperty === 'email') {
+      await user.updateEmail(value);
+    }
+    await this.getProfile(user);
   }
 
   render() {
