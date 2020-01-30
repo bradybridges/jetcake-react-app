@@ -3,13 +3,16 @@ import './App.scss';
 import { Route, Switch } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import Login from '../Login/Login';
+import CreateAccount from '../CreateAccount/CreateAccount';
 import * as firebase from 'firebase';
 import 'firebase/auth';
+import 'firebase/storage';
 import ApiKeys from '../../ApiKeys';
 
 class App extends Component {
   state = {
     showLogin: false,
+    showCreateAccount: false,
     user: null,
   }
 
@@ -29,6 +32,11 @@ class App extends Component {
     this.setState({ showLogin: toggledState });
   }
 
+  toggleShowCreateAccount = () => {
+    const toggledState = !this.state.showCreateAccount;
+    this.setState({ showCreateAccount: toggledState });
+  }
+
   handleLogout = () => {
     firebase.auth().signOut();
   }
@@ -38,15 +46,9 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Header toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
+            <Header toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
-          </Route>
-          <Route path="/create">
-            <h1>Create An Account</h1>
-          </Route>
-          <Route path="/login">
-            <h1>Login</h1>
-            <Login />
+            {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount}/>}
           </Route>
           <Route path="/profile">
             <h1>Profile</h1>
