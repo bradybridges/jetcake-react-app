@@ -9,7 +9,7 @@ export default class EditProfileForm extends Component {
     securityOne: this.props.securityOne,
     securityTwo: this.props.securityTwo,
     securityThree: this.props.securityThree,
-  }
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
