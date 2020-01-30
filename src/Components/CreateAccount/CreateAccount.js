@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CreateAccount.scss';
 import * as firebase from 'firebase';
 import 'firebase/auth';
+import 'firebase/storage';
 
 export default class CreateAccount extends Component {
   state = {
@@ -62,10 +63,6 @@ export default class CreateAccount extends Component {
     return completed;
   }
 
-  updateProfile = () => {
-
-  }
-
   handleCreateAccount = async (e) => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -78,11 +75,37 @@ export default class CreateAccount extends Component {
         return;
       }
       const newUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
-      
-      console.log(newUser);
+      await this.handleProfilePictureUpload(newUser);
+
     } catch(error) {
       this.setState({ error: error.message });
     }
+  }
+
+  handleImgChange = (e) => {
+    if(e.target.files[0]) {
+      this.setState ({ profile: e.target.files[0] });
+    }
+  }
+
+  handleProfilePictureUpload = async (newUser) => {
+    const { email } = newUser.user;
+    const { profile } = this.state;
+    try {
+      await firebase.storage().ref(`${email}/profile.jpg`).put(profile);
+      const url = await firebase.storage().ref(email).child('profile.jpg').getDownloadURL();
+      console.log(url);
+      this.updateProfilePicture(url);
+    } catch(error) {
+      console.error('Upload Error', error);
+    }
+  }
+
+  updateProfilePicture = async (photoURL) => {
+    const user = await firebase.auth().currentUser;
+    await user.updateProfile({
+      photoURL
+    });
   }
 
   render() {
@@ -101,7 +124,7 @@ export default class CreateAccount extends Component {
         <label>Date of Birth</label>
         <input name="dob" onChange={this.handleChange} type="date" value={this.state.dob}/>
         <label>Profile Picture</label>
-        <input name="profile" onChange={this.handleChange} type="file" value={this.state.profile}/>
+        <input name="profile" onChange={this.handleImgChange} type="file" />
         <label>Address</label>
         <input name="address" onChange={this.handleChange} type="text" value={this.state.address}/>
         <section id="security-questions-container">
