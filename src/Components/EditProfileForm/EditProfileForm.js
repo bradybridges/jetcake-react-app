@@ -27,24 +27,26 @@ export default class EditProfileForm extends Component {
   }
 
   render() {
+    const { email, address, phone, dob, securityOne, securityTwo, securityThree } = this.state;
+    const { toggleShowEditProfile } = this.props;
     return (
       <section id="edit-profile-form">
         <label>Email</label>
-        <input name="email" type="text" value={this.state.email} onChange={this.handleChange} />
+        <input name="email" type="text" value={email} onChange={this.handleChange} />
         <label>Address</label>
-        <input name="address" type="text" value={this.state.address} onChange={this.handleChange} />
+        <input name="address" type="text" value={address} onChange={this.handleChange} />
         <label>Phone</label>
-        <input name="phone" type="text" value={this.state.phone} onChange={this.handleChange} />
+        <input name="phone" type="text" value={phone} onChange={this.handleChange} />
         <label>Birthday</label>
-        <input name="dob" type="text" value={this.state.dob} onChange={this.handleChange} />
+        <input name="dob" type="text" value={dob} onChange={this.handleChange} />
         <label>Mother's maiden name?</label>
-        <input name="securityOne" type="text" value={this.state.securityOne} onChange={this.handleChange} />
+        <input name="securityOne" type="text" value={securityOne} onChange={this.handleChange} />
         <label>Name of first pet?</label>
-        <input name="securityTwo" type="text" value={this.state.securityTwo} onChange={this.handleChange} />
+        <input name="securityTwo" type="text" value={securityTwo} onChange={this.handleChange} />
         <label>City you grew up in?</label>
-        <input name="securityThree" type="text" value={this.state.securityThree} onChange={this.handleChange} />
+        <input name="securityThree" type="text" value={securityThree} onChange={this.handleChange} />
         <button onClick={this.handleUpdateProfile}>Save Profile</button>
-        <button onClick={this.props.toggleShowEditProfile}>Cancel</button>
+        <button onClick={toggleShowEditProfile}>Cancel</button>
       </section>
     );
   }
