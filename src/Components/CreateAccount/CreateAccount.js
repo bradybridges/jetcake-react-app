@@ -95,16 +95,15 @@ export default class CreateAccount extends Component {
       securityTwo, 
       securityThree
     } = this.state;
-    const newProfile ={
-      email,
-      address,
-      phone,
-      dob,
-      securityOne,
-      securityTwo,
-      securityThree,
-    }
-    await firebase.firestore().collection('profiles').add(newProfile);
+    await firebase.firestore().collection('profiles').add({
+      email, 
+      address, 
+      phone, 
+      dob, 
+      securityOne, 
+      securityTwo, 
+      securityThree 
+    });
   }
 
   handleImgChange = (e) => {
