@@ -24,12 +24,11 @@ exports[`Header should match snapshot 1`] = `
       <li
         className="nav-link"
       >
-        <Link
+        <span
           className="link"
-          to="/create"
         >
           Create Account
-        </Link>
+        </span>
       </li>
       <li
         className="nav-link"

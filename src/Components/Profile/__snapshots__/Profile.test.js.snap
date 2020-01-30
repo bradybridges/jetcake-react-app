@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile should match the snapshot when edit profile is false 1`] = `
+<section
+  id="profile-container"
+>
+  <img
+    alt="profile"
+    id="profile-img"
+    src="https://mockHost.com/userID/profile.jpg"
+  />
+  <div
+    id="edit-btn-container"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+      }
+    }
+  >
+    <img
+      alt="edit"
+      src="edit.png"
+    />
+  </div>
+  <ProfileInformation
+    address="123 test blvd"
+    dob="1990-10-10"
+    email="test@test.com"
+    phone="1112223333"
+    securityOne="Roger"
+    securityThree="Minneapolis"
+    securityTwo="Fido"
+  />
+</section>
+`;
+
+exports[`Profile should match the snapshot when edit profile is true 1`] = `
+<section
+  id="profile-container"
+>
+  <img
+    alt="profile"
+    id="profile-img"
+    src="https://mockHost.com/userID/profile.jpg"
+  />
+  <div
+    id="edit-btn-container"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+      }
+    }
+  >
+    <img
+      alt="edit"
+      src="edit.png"
+    />
+  </div>
+  <EditProfileForm
+    address="123 test blvd"
+    dob="1990-10-10"
+    email="test@test.com"
+    handleUpdateProfile={[MockFunction]}
+    phone="1112223333"
+    securityOne="Roger"
+    securityThree="Minneapolis"
+    securityTwo="Fido"
+    toggleShowEditProfile={[Function]}
+  />
+</section>
+`;

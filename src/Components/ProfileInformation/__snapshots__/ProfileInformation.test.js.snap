@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInformation should match snapshot 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <td>
+        Email
+      </td>
+      <td>
+        test@test.com
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Address
+      </td>
+      <td>
+        123 test blvd
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Phone Number
+      </td>
+      <td>
+        1112223333
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Birthday
+      </td>
+      <td>
+        1990-09-09
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Mother's maiden name?
+      </td>
+      <td>
+        Randall
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Name of first pet?
+      </td>
+      <td>
+        Fido
+      </td>
+    </tr>
+    <tr>
+      <td>
+        City where you grew up?
+      </td>
+      <td>
+        Minneapolis
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

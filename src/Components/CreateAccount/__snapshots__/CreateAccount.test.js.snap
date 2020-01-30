@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateAccount should match snapshot 1`] = `
+<form
+  id="create-account-form"
+  onSubmit={[Function]}
+>
+  <label>
+    Email
+  </label>
+  <input
+    name="email"
+    onChange={[Function]}
+    type="email"
+    value=""
+  />
+  <label>
+    Password
+  </label>
+  <input
+    name="password"
+    onChange={[Function]}
+    type="password"
+    value=""
+  />
+  <label>
+    Confirm Password
+  </label>
+  <input
+    name="passwordConfirm"
+    onChange={[Function]}
+    type="password"
+    value=""
+  />
+  <label>
+    Phone Number
+  </label>
+  <input
+    name="phone"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label>
+    Date of Birth
+  </label>
+  <input
+    name="dob"
+    onChange={[Function]}
+    type="date"
+    value=""
+  />
+  <label>
+    Profile Picture
+  </label>
+  <input
+    name="profile"
+    onChange={[Function]}
+    type="file"
+  />
+  <label>
+    Address
+  </label>
+  <input
+    name="address"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <section
+    id="security-questions-container"
+  >
+    <span>
+      Mothers Maiden Name?
+    </span>
+    <input
+      name="securityOne"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span>
+      First Pet's Name?
+    </span>
+    <input
+      name="securityTwo"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <span>
+      Town where you grew up?
+    </span>
+    <input
+      name="securityThree"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </section>
+  <section
+    id="submission-container"
+  >
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+    <button
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </button>
+  </section>
+</form>
+`;
