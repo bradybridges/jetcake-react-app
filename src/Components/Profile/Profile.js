@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import ProfileInformation from '../ProfileInformation/ProfileInformation';
+import EditProfileForm from '../EditProfileForm/EditProfileForm';
 const editImg = require('../../Assets/edit.png');
 
 export default class Profile extends Component{
+  state = {
+    showEditProfile: false,
+  }
+
+  toggleShowEditProfile = () => {
+    const updatedState = !this.state.showEditProfile;
+    this.setState({ showEditProfile: updatedState });
+  }
+
   render() {
     const {
       email, 
@@ -15,13 +25,29 @@ export default class Profile extends Component{
       photoURL, 
       handleUpdateProfile 
     } = this.props;
+
     return (
       <section id="profile-container">
         <img id="profile-img" src={photoURL} alt="profile" />
-        <div id="edit-btn-container" style={{backgroundColor: 'black'}}>
+        <div 
+          id="edit-btn-container" 
+          style={{backgroundColor: 'black'}}
+          onClick={() => this.setState({ showEditProfile: true })}
+        >
           <img src={editImg} alt="edit" />
         </div>
-        <ProfileInformation 
+        {this.state.showEditProfile && <EditProfileForm 
+          email={email}
+          address={address}
+          phone={phone}
+          dob={dob}
+          securityOne={securityOne}
+          securityTwo={securityTwo}
+          securityThree={securityThree}
+          toggleShowEditProfile={this.toggleShowEditProfile}
+          handleUpdateProfile={handleUpdateProfile}
+        />}
+        { !this.state.showEditProfile && <ProfileInformation 
           email={email}
           address={address}
           phone={phone}
@@ -30,40 +56,9 @@ export default class Profile extends Component{
           securityTwo={securityTwo}
           securityThree={securityThree}
         />
+        }
       </section>
     );
   }
 }
 
-{/* <table>
-<tbody>
-  <tr>
-    <td>Email</td>
-    <td>{email}</td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>{address}</td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td>{phone}</td>
-  </tr>
-  <tr>
-    <td>Birthday</td>
-    <td>{dob}</td>
-  </tr>
-  <tr>
-    <td>Mother's maiden name?</td>
-    <td>{securityOne}</td>
-  </tr>
-  <tr>
-    <td>Name of first pet?</td>
-    <td>{securityTwo}</td>
-  </tr>
-  <tr>
-    <td>City where you grew up?</td>
-    <td>{securityThree}</td>
-  </tr>
-</tbody>
-</table> */}
