@@ -17,6 +17,7 @@ class App extends Component {
     showCreateAccount: false,
     user: null,
     profile: null,
+    profileID: null,
   }
 
   componentDidMount = () => {
@@ -57,12 +58,18 @@ class App extends Component {
       }  
   
       snapshot.forEach(doc => {
-        this.setState({ profile: doc.data() });
+        this.setState({ profile: doc.data(), profileID: doc.id });
       });
     })
     .catch(err => {
       console.log('Error getting documents', err);
     });
+  }
+
+  handleUpdateProfile = (profileProperty, value) => {
+    const { profileID } = this.state;
+    firebase.firestore().collection('profiles').doc(profileID)
+      .update({[profileProperty]: value });
   }
 
   render() {
@@ -86,6 +93,7 @@ class App extends Component {
                 securityOne={profile.securityOne}
                 securityTwo={profile.securityTwo}
                 securityThree={profile.securityThree}
+                handleUpdateProfile={this.handleUpdateProfile}
               />
             </Route>
           }
