@@ -3,6 +3,7 @@ import './CreateAccount.scss';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
+import 'firebase/firestore';
 
 export default class CreateAccount extends Component {
   state = {
@@ -65,6 +66,7 @@ export default class CreateAccount extends Component {
 
   handleCreateAccount = async (e) => {
     e.preventDefault();
+    const { toggleShowCreateAccount } = this.props;
     const { email, password } = this.state;
     try {
       if(!this.verifyPasswords()) {
@@ -76,10 +78,33 @@ export default class CreateAccount extends Component {
       }
       const newUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
       await this.handleProfilePictureUpload(newUser);
-
+      await this.handleAddProfile();
+      toggleShowCreateAccount();
     } catch(error) {
       this.setState({ error: error.message });
     }
+  }
+
+  handleAddProfile = async () => {
+    const { 
+      email, 
+      address, 
+      phone, 
+      dob, 
+      securityOne, 
+      securityTwo, 
+      securityThree
+    } = this.state;
+    const newProfile ={
+      email,
+      address,
+      phone,
+      dob,
+      securityOne,
+      securityTwo,
+      securityThree,
+    }
+    await firebase.firestore().collection('profiles').add(newProfile);
   }
 
   handleImgChange = (e) => {
