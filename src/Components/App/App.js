@@ -7,6 +7,7 @@ import CreateAccount from '../CreateAccount/CreateAccount';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
+import 'firebase/firestore';
 import ApiKeys from '../../ApiKeys';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
     showLogin: false,
     showCreateAccount: false,
     user: null,
+    profile: null,
   }
 
   componentDidMount = () => {
@@ -21,6 +23,7 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.setState({ user });
+        this.getProfile(user);
       } else {
         this.setState({ user: null });
       }
@@ -39,6 +42,26 @@ class App extends Component {
 
   handleLogout = () => {
     firebase.auth().signOut();
+    this.setState({ user: null, profile: null });
+  }
+
+  getProfile = async (user) => {
+    const { email } = user;
+    const profileQuery = firebase.firestore().collection('profiles').where('email', '==', email);
+    profileQuery.get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        console.log('No matching documents.');
+        return;
+      }  
+  
+      snapshot.forEach(doc => {
+        this.setState({ profile: doc.data() });
+      });
+    })
+    .catch(err => {
+      console.log('Error getting documents', err);
+    });
   }
 
   render() {
