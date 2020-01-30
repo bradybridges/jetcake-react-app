@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function ProfileInformation({ email, address, phone, dob, securityOne, securityTwo, securityThree }) {
+export default function ProfileInformation({
+  email, address, phone, dob, securityOne, securityTwo, securityThree,
+}) {
   return (
     <table>
       <tbody>

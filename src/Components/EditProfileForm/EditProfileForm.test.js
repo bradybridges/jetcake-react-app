@@ -8,7 +8,7 @@ describe('EditProfileForm', () => {
   const mockToggleShowEditProfile = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<EditProfileForm 
+    wrapper = shallow(<EditProfileForm
       email="test@test.com"
       address="123 hello ct"
       phone="1112223333"
@@ -28,14 +28,14 @@ describe('EditProfileForm', () => {
   it('handleChange should update the corresponding property in state with a specified value', () => {
     const mockEmailEvent = {
       target: {
-        name: "email",
-        value: "newEmail@newEmail.com"
+        name: 'email',
+        value: 'newEmail@newEmail.com',
       },
     };
     const mockPhoneEvent = {
       target: {
-        name: "phone",
-        value: "9999999999"
+        name: 'phone',
+        value: '9999999999',
       },
     };
     expect(wrapper.state('email')).toEqual('test@test.com');

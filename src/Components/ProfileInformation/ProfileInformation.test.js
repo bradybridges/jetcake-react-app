@@ -4,7 +4,7 @@ import ProfileInformation from './ProfileInformation';
 import Profile from '../Profile/Profile';
 
 describe('ProfileInformation', () => {
-  const wrapper = shallow(<ProfileInformation 
+  const wrapper = shallow(<ProfileInformation
     email="test@test.com"
     address="123 test blvd"
     phone="1112223333"
@@ -15,5 +15,5 @@ describe('ProfileInformation', () => {
   />);
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 });

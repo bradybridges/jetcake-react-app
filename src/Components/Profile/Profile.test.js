@@ -1,12 +1,12 @@
 import React from 'react';
-import Profile from './Profile';
 import { shallow } from 'enzyme';
+import Profile from './Profile';
 
 describe('Profile', () => {
   let wrapper;
   const mockHandleUpdateProfile = jest.fn();
   it('should match the snapshot when edit profile is false', () => {
-    wrapper = shallow(<Profile 
+    wrapper = shallow(<Profile
       email="test@test.com"
       address="123 test blvd"
       phone="1112223333"
@@ -21,7 +21,7 @@ describe('Profile', () => {
   });
 
   it('should match the snapshot when edit profile is true', () => {
-    let editTrueWrapper = shallow(<Profile 
+    const editTrueWrapper = shallow(<Profile
       email="test@test.com"
       address="123 test blvd"
       phone="1112223333"
@@ -34,11 +34,11 @@ describe('Profile', () => {
     />);
     editTrueWrapper.setState({ showEditProfile: true });
     expect(editTrueWrapper).toMatchSnapshot();
-  })
+  });
 
   it('toggleShowEditProfile should toggle showEditProfile in state', () => {
     expect(wrapper.state('showEditProfile')).toEqual(false);
     wrapper.instance().toggleShowEditProfile();
     expect(wrapper.state('showEditProfile')).toEqual(true);
   });
-})
+});
