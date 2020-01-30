@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 describe('Header', () => {
   it('should match snapshot', () => {
   const wrapper = shallow(<Header 
-    toggleShowLogin={jest.fn()} 
+    toggleShowLogin={jest.fn()}
     user={{email: "test@test.com"}} 
     handleLogout={jest.fn()} 
   />);
