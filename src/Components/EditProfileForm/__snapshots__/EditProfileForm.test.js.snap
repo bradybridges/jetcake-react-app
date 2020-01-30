@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProfileForm should match snapshot 1`] = `
+<section
+  id="edit-profile-form"
+>
+  <label>
+    Email
+  </label>
+  <input
+    name="email"
+    onChange={[Function]}
+    type="text"
+    value="test@test.com"
+  />
+  <label>
+    Address
+  </label>
+  <input
+    name="address"
+    onChange={[Function]}
+    type="text"
+    value="123 hello ct"
+  />
+  <label>
+    Phone
+  </label>
+  <input
+    name="phone"
+    onChange={[Function]}
+    type="text"
+    value="1112223333"
+  />
+  <label>
+    Birthday
+  </label>
+  <input
+    name="dob"
+    onChange={[Function]}
+    type="text"
+    value="1999-01-01"
+  />
+  <label>
+    Mother's maiden name?
+  </label>
+  <input
+    name="securityOne"
+    onChange={[Function]}
+    type="text"
+    value="James"
+  />
+  <label>
+    Name of first pet?
+  </label>
+  <input
+    name="securityTwo"
+    onChange={[Function]}
+    type="text"
+    value="Fido"
+  />
+  <label>
+    City you grew up in?
+  </label>
+  <input
+    name="securityThree"
+    onChange={[Function]}
+    type="text"
+    value="Atlanta"
+  />
+  <button
+    onClick={[Function]}
+  >
+    Save Profile
+  </button>
+  <button
+    onClick={[MockFunction]}
+  >
+    Cancel
+  </button>
+</section>
+`;
