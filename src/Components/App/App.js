@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
+import Profile from '../Profile/Profile';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
@@ -65,6 +66,7 @@ class App extends Component {
   }
 
   render() {
+    const { profile } = this.state;
     return (
       <div className="App">
         <Switch>
@@ -73,9 +75,20 @@ class App extends Component {
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
             {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount}/>}
           </Route>
-          <Route path="/profile">
-            <h1>Profile</h1>
-          </Route>
+          {(this.state.profile && this.state.user) && 
+            <Route path="/profile">
+              <Profile
+                photoURL={this.state.user.photoURL} 
+                address={profile.address} 
+                dob={profile.dob} 
+                email={profile.email} 
+                phone={profile.phone}
+                securityOne={profile.securityOne}
+                securityTwo={profile.securityTwo}
+                securityThree={profile.securityThree}
+              />
+            </Route>
+          }
         </Switch>
       </div>
     );
