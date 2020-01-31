@@ -5,6 +5,7 @@ import { Header } from '../Header/Header';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import Profile from '../Profile/Profile';
+import Footer from '../Footer/Footer';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
@@ -119,6 +120,7 @@ class App extends Component {
             {this.state.profile && <h3>Welcome, {profile.email}</h3>}
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
             {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
+            <Footer />
           </Route>
           {(this.state.profile && this.state.user) && 
             <Route path="/profile">
@@ -134,6 +136,7 @@ class App extends Component {
                 handleUpdateProfile={this.handleUpdateProfile}
                 handleUpdateProfileImg={this.handleUpdateProfileImg}
               />
+              <Footer />
             </Route>
           }
         </Switch>
