@@ -75,6 +75,22 @@ class App extends Component {
     await this.getProfile(user);
   }
 
+  setProfile = (email, address, phone, profile, dob, securityOne, securityTwo, securityThree) => {
+    const newProfile = {
+      email,
+      address,
+      phone, 
+      profile,
+      dob,
+      profile,
+      dob,
+      securityOne,
+      securityTwo,
+      securityThree,
+    };
+    this.setState({ profile: newProfile });
+  }
+
   render() {
     const { profile } = this.state;
     return (
@@ -82,8 +98,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/">
             <Header toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
+            {this.state.profile && <h3>Welcome, {profile.email}</h3>}
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
-            {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount}/>}
+            {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
           </Route>
           {(this.state.profile && this.state.user) && 
             <Route path="/profile">

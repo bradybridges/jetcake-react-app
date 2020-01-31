@@ -86,6 +86,7 @@ export default class CreateAccount extends Component {
   }
 
   handleAddProfile = async () => {
+    const { setProfile } = this.props;
     const { 
       email, 
       address, 
@@ -104,6 +105,7 @@ export default class CreateAccount extends Component {
       securityTwo, 
       securityThree 
     });
+    setProfile(email, address, phone, dob, securityOne, securityTwo, securityThree);
   }
 
   handleImgChange = (e) => {
