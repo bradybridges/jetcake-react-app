@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Profile.scss';
+import { Link } from 'react-router-dom';
 import ProfileInformation from '../ProfileInformation/ProfileInformation';
 import EditProfileForm from '../EditProfileForm/EditProfileForm';
 const editImg = require('../../Assets/edit.png');
@@ -28,6 +30,8 @@ export default class Profile extends Component{
 
     return (
       <section id="profile-container">
+        <Link to="/">Go Back</Link>
+        <h3>Profile</h3>
         <img id="profile-img" src={photoURL} alt="profile" />
         <div 
           id="edit-btn-container" 

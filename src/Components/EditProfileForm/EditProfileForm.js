@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './EditProfileForm.scss';
 
 export default class EditProfileForm extends Component {
   state = {
@@ -31,22 +32,24 @@ export default class EditProfileForm extends Component {
     const { toggleShowEditProfile } = this.props;
     return (
       <section id="edit-profile-form">
-        <label>Email</label>
-        <input name="email" type="text" value={email} onChange={this.handleChange} />
-        <label>Address</label>
-        <input name="address" type="text" value={address} onChange={this.handleChange} />
-        <label>Phone</label>
-        <input name="phone" type="text" value={phone} onChange={this.handleChange} />
-        <label>Birthday</label>
-        <input name="dob" type="text" value={dob} onChange={this.handleChange} />
-        <label>Mother's maiden name?</label>
-        <input name="securityOne" type="text" value={securityOne} onChange={this.handleChange} />
-        <label>Name of first pet?</label>
-        <input name="securityTwo" type="text" value={securityTwo} onChange={this.handleChange} />
-        <label>City you grew up in?</label>
-        <input name="securityThree" type="text" value={securityThree} onChange={this.handleChange} />
-        <button onClick={this.handleUpdateProfile}>Save Profile</button>
-        <button onClick={toggleShowEditProfile}>Cancel</button>
+        <label className="input-label">Email</label>
+        <input className="input-field" name="email" type="text" value={email} onChange={this.handleChange} />
+        <label className="input-label">Address</label>
+        <input className="input-field" name="address" type="text" value={address} onChange={this.handleChange} />
+        <label className="input-label">Phone</label>
+        <input className="input-field" name="phone" type="text" value={phone} onChange={this.handleChange} />
+        <label className="input-label">Birthday</label>
+        <input className="input-field" name="dob" type="text" value={dob} onChange={this.handleChange} />
+        <label className="input-label">Mother's maiden name?</label>
+        <input className="input-field" name="securityOne" type="text" value={securityOne} onChange={this.handleChange} />
+        <label className="input-label">Name of first pet?</label>
+        <input className="input-field" name="securityTwo" type="text" value={securityTwo} onChange={this.handleChange} />
+        <label className="input-label">City you grew up in?</label>
+        <input className="input-field" name="securityThree" type="text" value={securityThree} onChange={this.handleChange} />
+        <section id="save-profile-btn-container">
+          <button className="form-btn" onClick={this.handleUpdateProfile}>Save Profile</button>
+          <button className="form-btn" onClick={toggleShowEditProfile}>Cancel</button>
+        </section>
       </section>
     );
   }

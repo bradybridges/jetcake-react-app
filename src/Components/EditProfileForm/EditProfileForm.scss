@@ -1,0 +1,29 @@
+// #profile-information-container {
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+// }
+
+// tbody {
+//   width: 50%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: blueviolet;
+//   color: white;
+//   padding: 10px;
+//   border-radius: 4px;
+// }
+#edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  background-color: blueviolet;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#save-profile-btn-container {
+  margin-top: 10px;
+}

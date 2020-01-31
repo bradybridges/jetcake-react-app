@@ -1,10 +1,11 @@
 import React from 'react';
+import './ProfileInformation.scss';
 
 export default function ProfileInformation({
   email, address, phone, dob, securityOne, securityTwo, securityThree,
 }) {
   return (
-    <table>
+    <table id="profile-information-container">
       <tbody>
         <tr>
           <td>Email</td>
