@@ -14,7 +14,8 @@ export default class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleLogin = async () => {
+  handleLogin = async (e) => {
+    e.preventDefault();
     const { email, password } = this.state;
     const { toggleShowLogin } = this.props;
     try {
@@ -22,6 +23,7 @@ export default class Login extends Component {
       toggleShowLogin(false);
     } catch(error) {
       this.setState({ error, email: "", password: "" });
+      toggleShowLogin(true);
       console.error(error);
     }
   }
@@ -53,8 +55,8 @@ export default class Login extends Component {
           className="input-field"
         />
         <section className="form-btn-container">
-          <button className="form-btn" onClick={this.handleLogin}>Login</button>
-          <button className="form-btn" onClick={toggleShowLogin}>Cancel</button>
+          <button className="form-btn" type="submit">Login</button>
+          <button className="form-btn" onClick={() => toggleShowLogin(false)}>Cancel</button>
         </section>
       </form>
     )

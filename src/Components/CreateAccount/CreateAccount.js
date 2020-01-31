@@ -162,7 +162,7 @@ export default class CreateAccount extends Component {
         </section>
         <section className="form-btn-container">
           <button className="form-btn" type="submit">Submit</button>
-          <button className="form-btn" onClick={toggleShowCreateAccount}>Cancel</button>
+          <button className="form-btn" onClick={() => toggleShowCreateAccount(false)}>Cancel</button>
         </section>
       </form>
     )
