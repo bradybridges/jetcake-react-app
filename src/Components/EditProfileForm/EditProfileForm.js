@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './EditProfileForm.scss';
+import * as firebase from 'firebase';
+import 'firebase/storage';
+import 'firebase/auth';
 
 export default class EditProfileForm extends Component {
   state = {
@@ -10,6 +13,7 @@ export default class EditProfileForm extends Component {
     securityOne: this.props.securityOne,
     securityTwo: this.props.securityTwo,
     securityThree: this.props.securityThree,
+    photoURL: this.props.photoURL,
   };
 
   handleChange = (e) => {
@@ -17,14 +21,19 @@ export default class EditProfileForm extends Component {
   }
 
   handleUpdateProfile = async () => {
-    const { handleUpdateProfile } = this.props;
+    const { handleUpdateProfile, handleUpdateProfileImg, toggleShowEditProfile } = this.props;
     const stateKeys = Object.keys(this.state);
     stateKeys.forEach((property) => {
-      if(this.state[property] !== this.props[property]) {
+      if(this.state[property] !== this.props[property] && property !== "photoURL") {
         const newValue = this.state[property];
         handleUpdateProfile(property, newValue);
       }
+      if(property === 'photoURL' && this.state[property] !== this.props[property]) {
+        const image = this.state.photoURL;
+        handleUpdateProfileImg(image);       
+      }
     });
+    toggleShowEditProfile(false);
   }
 
   render() {
@@ -32,6 +41,8 @@ export default class EditProfileForm extends Component {
     const { toggleShowEditProfile } = this.props;
     return (
       <section id="edit-profile-form">
+        <label className="input-label">Profile Picture</label>
+        <input className="input-field" type="file" onChange={(e) => this.setState({ photoURL: e.target.files[0]})}/>
         <label className="input-label">Email</label>
         <input className="input-field" name="email" type="text" value={email} onChange={this.handleChange} />
         <label className="input-label">Address</label>

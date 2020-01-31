@@ -121,13 +121,13 @@ export default class CreateAccount extends Component {
       await firebase.storage().ref(`${email}/profile.jpg`).put(profile);
       const url = await firebase.storage().ref(email).child('profile.jpg').getDownloadURL();
       console.log(url);
-      this.updateProfilePicture(url);
+      this.updateProfilePicturePath(url);
     } catch(error) {
       console.error('Upload Error', error);
     }
   }
 
-  updateProfilePicture = async (photoURL) => {
+  updateProfilePicturePath = async (photoURL) => {
     const user = await firebase.auth().currentUser;
     await user.updateProfile({
       photoURL

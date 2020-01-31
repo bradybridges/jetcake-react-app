@@ -45,6 +45,21 @@ class App extends Component {
     this.setState({ user: null, profile: null });
   }
 
+  handleUpdateProfileImg = async (image) => {
+    try {
+      const user = await firebase.auth().currentUser;
+      await firebase.storage().ref(user.email).child('profile.jpg').delete();
+      await firebase.storage().ref(`${user.email}/profile.jpg`).put(image);
+      const photoURL = await firebase.storage().ref(user.email).child('profile.jpg').getDownloadURL();
+      await user.updateProfile({
+        photoURL,
+      });
+      this.setState({ user });
+    } catch(error) {
+      this.setState({ error: error.message });
+    }
+  }
+
   getProfile = async (user) => {
     const { email } = user;
     const profileQuery = firebase.firestore().collection('profiles').where('email', '==', email);
@@ -66,13 +81,17 @@ class App extends Component {
 
   handleUpdateProfile = async (profileProperty, value) => {
     const { profileID } = this.state;
-    await firebase.firestore().collection('profiles').doc(profileID)
-      .update({[profileProperty]: value });
-    const user = await firebase.auth().currentUser;
-    if(profileProperty === 'email') {
-      await user.updateEmail(value);
+    try {
+      await firebase.firestore().collection('profiles').doc(profileID)
+        .update({[profileProperty]: value });
+      const user = await firebase.auth().currentUser;
+      if(profileProperty === 'email') {
+        await user.updateEmail(value);
+      }
+      await this.getProfile(user);
+    } catch(error) {
+      this.setState({ error: "Please log out and lock back in to change email address" });
     }
-    await this.getProfile(user);
   }
 
   setProfile = (email, address, phone, profile, dob, securityOne, securityTwo, securityThree) => {
@@ -80,8 +99,6 @@ class App extends Component {
       email,
       address,
       phone, 
-      profile,
-      dob,
       profile,
       dob,
       securityOne,
@@ -114,6 +131,7 @@ class App extends Component {
                 securityTwo={profile.securityTwo}
                 securityThree={profile.securityThree}
                 handleUpdateProfile={this.handleUpdateProfile}
+                handleUpdateProfileImg={this.handleUpdateProfileImg}
               />
             </Route>
           }

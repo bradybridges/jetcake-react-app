@@ -25,7 +25,8 @@ export default class Profile extends Component{
       securityTwo, 
       securityThree, 
       photoURL, 
-      handleUpdateProfile 
+      handleUpdateProfile,
+      handleUpdateProfileImg, 
     } = this.props;
 
     return (
@@ -45,11 +46,13 @@ export default class Profile extends Component{
           address={address}
           phone={phone}
           dob={dob}
+          photoURL={photoURL}
           securityOne={securityOne}
           securityTwo={securityTwo}
           securityThree={securityThree}
           toggleShowEditProfile={this.toggleShowEditProfile}
           handleUpdateProfile={handleUpdateProfile}
+          handleUpdateProfileImg={handleUpdateProfileImg}
         />}
         { !this.state.showEditProfile && <ProfileInformation 
           email={email}
