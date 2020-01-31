@@ -19,7 +19,7 @@ export default class Login extends Component {
     const { toggleShowLogin } = this.props;
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      toggleShowLogin();
+      toggleShowLogin(false);
     } catch(error) {
       this.setState({ error, email: "", password: "" });
       console.error(error);
@@ -34,7 +34,7 @@ export default class Login extends Component {
       }, 2500);
     }
     return (
-      <section className="login-form">
+      <form className="login-form" onSubmit={this.handleLogin}>
         {this.state.error && <p id="error-msg">{this.state.error.message}</p>}
         <label className="input-label">Email</label>
         <input 
@@ -56,7 +56,7 @@ export default class Login extends Component {
           <button className="form-btn" onClick={this.handleLogin}>Login</button>
           <button className="form-btn" onClick={toggleShowLogin}>Cancel</button>
         </section>
-      </section>
+      </form>
     )
   }
 }

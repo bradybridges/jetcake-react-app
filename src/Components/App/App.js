@@ -32,13 +32,11 @@ class App extends Component {
     })
   }
 
-  toggleShowLogin = () => {
-    const toggledState = !this.state.showLogin;
+  toggleShowLogin = ( toggledState = !this.state.showLogin) => {
     this.setState({ showLogin: toggledState, showCreateAccount: false });
   }
 
-  toggleShowCreateAccount = () => {
-    const toggledState = !this.state.showCreateAccount;
+  toggleShowCreateAccount = (toggledState = !this.state.showCreateAccount) => {
     this.setState({ showCreateAccount: toggledState, showLogin: false });
   }
 

@@ -79,7 +79,7 @@ export default class CreateAccount extends Component {
       const newUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
       await this.handleProfilePictureUpload(newUser);
       await this.handleAddProfile();
-      toggleShowCreateAccount();
+      toggleShowCreateAccount(false);
     } catch(error) {
       this.setState({ error: error.message });
     }
@@ -160,7 +160,7 @@ export default class CreateAccount extends Component {
           <label className="input-label">Town where you grew up?</label>
           <input className="input-field" name="securityThree" onChange={this.handleChange} type="text" value={this.state.securityThree}/>
         </section>
-        <section id="submission-container">
+        <section className="form-btn-container">
           <button className="form-btn" type="submit">Submit</button>
           <button className="form-btn" onClick={toggleShowCreateAccount}>Cancel</button>
         </section>
