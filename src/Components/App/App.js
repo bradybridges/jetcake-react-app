@@ -18,6 +18,7 @@ class App extends Component {
     user: null,
     profile: null,
     profileID: null,
+    error: null,
   }
 
   componentDidMount = () => {

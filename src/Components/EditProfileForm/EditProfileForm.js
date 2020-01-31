@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './EditProfileForm.scss';
-import * as firebase from 'firebase';
-import 'firebase/storage';
-import 'firebase/auth';
 
 export default class EditProfileForm extends Component {
   state = {
@@ -14,6 +11,7 @@ export default class EditProfileForm extends Component {
     securityTwo: this.props.securityTwo,
     securityThree: this.props.securityThree,
     photoURL: this.props.photoURL,
+    error: null,
   };
 
   handleChange = (e) => {
