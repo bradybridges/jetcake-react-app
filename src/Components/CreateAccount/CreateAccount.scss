@@ -1,0 +1,25 @@
+#create-account-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-left: -200px;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#security-questions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#submission-container {
+  margin-top: 10px;
+}
