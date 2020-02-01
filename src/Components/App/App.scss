@@ -13,18 +13,3 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
-
-html::-webkit-scrollbar {
-  display: none;
-}
-
-#welcome-banner {
-  width: 90%;
-  font-size: 2em;
-  color: white;
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.315);
-  margin: 10px auto;
-  border-radius: 4px;
-  padding: 10px;
-}
