@@ -24,10 +24,10 @@ class App extends Component {
 
   componentDidMount = () => {
     if(!firebase.apps.length) firebase.initializeApp(ApiKeys.FirebaseConfig);
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) {
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (user) {
         this.setState({ user });
-        this.getProfile(user);
+        await this.getProfile(user);
       } else {
         this.setState({ user: null });
       }
@@ -120,6 +120,7 @@ class App extends Component {
             {this.state.profile && <h3 id="welcome-banner">Welcome, {profile.email}!</h3>}
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
             {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
+            <Footer />
           </Route>
           {(this.state.profile && this.state.user) && 
             <Route path="/profile">
@@ -136,10 +137,10 @@ class App extends Component {
                 handleUpdateProfile={this.handleUpdateProfile}
                 handleUpdateProfileImg={this.handleUpdateProfileImg}
               />
+              <Footer />
             </Route>
           }
         </Switch>
-        <Footer />
       </div>
     );
   }

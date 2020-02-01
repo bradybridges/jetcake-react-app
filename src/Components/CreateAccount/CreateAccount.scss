@@ -8,9 +8,10 @@
   margin-left: -200px;
   justify-content: center;
   align-items: center;
-  background-color: blueviolet;
   padding: 10px;
   border-radius: 4px;
+  box-shadow: 0px 0px 20px 0px #ffffff2e;
+  background-color: rgba(0, 0, 0, 0.315);
 }
 
 #security-questions-container {
@@ -18,8 +19,4 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.form-btn-container {
-  margin-top: 10px;
 }

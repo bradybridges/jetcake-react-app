@@ -21,10 +21,10 @@ export default class EditProfileForm extends Component {
   handleUpdateProfile = async () => {
     const { handleUpdateProfile, handleUpdateProfileImg, toggleShowEditProfile } = this.props;
     const stateKeys = Object.keys(this.state);
-    stateKeys.forEach((property) => {
+    stateKeys.forEach(async (property) => {
       if(this.state[property] !== this.props[property] && property !== "photoURL") {
         const newValue = this.state[property];
-        handleUpdateProfile(property, newValue);
+        await handleUpdateProfile(property, newValue);
       }
       if(property === 'photoURL' && this.state[property] !== this.props[property]) {
         const image = this.state.photoURL;

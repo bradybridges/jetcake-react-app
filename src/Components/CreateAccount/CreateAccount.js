@@ -80,6 +80,7 @@ export default class CreateAccount extends Component {
       await this.handleProfilePictureUpload(newUser);
       await this.handleAddProfile();
       toggleShowCreateAccount(false);
+      this.forceUpdate();
     } catch(error) {
       this.setState({ error: error.message });
     }
@@ -121,7 +122,7 @@ export default class CreateAccount extends Component {
       await firebase.storage().ref(`${email}/profile.jpg`).put(profile);
       const url = await firebase.storage().ref(email).child('profile.jpg').getDownloadURL();
       console.log(url);
-      this.updateProfilePicturePath(url);
+      await this.updateProfilePicturePath(url);
     } catch(error) {
       console.error('Upload Error', error);
     }
@@ -135,6 +136,12 @@ export default class CreateAccount extends Component {
   }
 
   render() {
+    const { error } = this.state;
+    if(error) {
+      setTimeout(() => {
+        this.setState({ error: null });
+      }, 3500);
+    }
     const { toggleShowCreateAccount } = this.props;
     return (
       <form id="create-account-form" onSubmit={this.handleCreateAccount}>
