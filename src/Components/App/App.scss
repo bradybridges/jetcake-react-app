@@ -7,10 +7,15 @@
 
 html {
   background: url('../../Assets/rocket-background.jpg') no-repeat center center fixed; 
+  background-color: rgb(0, 0, 0);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 #welcome-banner {

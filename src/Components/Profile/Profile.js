@@ -31,12 +31,11 @@ export default class Profile extends Component{
 
     return (
       <section id="profile-container">
-        <Link to="/">Go Back</Link>
-        <h3>Profile</h3>
+        <Link to="/" className="back-link">Go Back</Link>
+        <h3 id="profile-header">Profile</h3>
         <img id="profile-img" src={photoURL} alt="profile" />
         <div 
           id="edit-btn-container" 
-          style={{backgroundColor: 'black'}}
           onClick={() => this.setState({ showEditProfile: true })}
         >
           <img src={editImg} alt="edit" />
