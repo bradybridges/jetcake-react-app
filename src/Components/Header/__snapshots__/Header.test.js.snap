@@ -7,46 +7,21 @@ exports[`Header should match snapshot 1`] = `
   >
     Hero Page
   </h1>
-  <nav>
-    <ul
-      id="nav-ul"
+  <section
+    id="account-container"
+  >
+    <Link
+      className="account-btn"
+      to="/profile"
     >
-      <li
-        className="nav-link"
-      >
-        <span
-          className="link"
-          onClick={[MockFunction]}
-        >
-          Login
-        </span>
-      </li>
-      <li
-        className="nav-link"
-      >
-        <span
-          className="link"
-        >
-          Create Account
-        </span>
-      </li>
-      <li
-        className="nav-link"
-      >
-        <Link
-          className="link"
-          to="/profile"
-        >
-          View Profile
-        </Link>
-      </li>
-      <span
-        className="link"
-        onClick={[MockFunction]}
-      >
-        Logout
-      </span>
-    </ul>
-  </nav>
+      View Profile
+    </Link>
+    <button
+      className="account-btn"
+      onClick={[MockFunction]}
+    >
+      Logout
+    </button>
+  </section>
 </header>
 `;

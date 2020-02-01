@@ -3,17 +3,15 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 
 export const Header = ({
-  toggleShowLogin, user, handleLogout, toggleShowCreateAccount,
+  toggleShowLogin, user, handleLogout, toggleShowCreateAccount, showNav,
 }) => (
   <header>
-    <h1 id="main-header">Hero Page</h1>
-    <nav>
-      <ul id="nav-ul">
-        <li className="nav-link"><span className="link" onClick={toggleShowLogin}>Login</span></li>
-        <li className="nav-link"><span className="link" onClick={toggleShowCreateAccount}>Create Account</span></li>
-        <li className="nav-link"><Link className="link" to="/profile">View Profile</Link></li>
-        { user && <span className="link" onClick={handleLogout}>Logout</span>}
-      </ul>
-    </nav>
+    <Link id="main-header" to="/">Hero Page</Link>
+    <section id="account-container">
+      { (showNav && !user) && <button className="account-btn" onClick={() => toggleShowLogin(true)}>Login</button>}
+      { (showNav && !user) && <button className="account-btn" onClick={() => toggleShowCreateAccount(true)}>Create Account</button>}
+      { (showNav && user) && <Link className="account-btn" to="/profile">View Profile</Link> }
+      { (showNav && user) && <button className="account-btn" onClick={handleLogout}>Logout</button> }
+    </section>
   </header>
 );

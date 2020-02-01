@@ -5,63 +5,87 @@ exports[`CreateAccount should match snapshot 1`] = `
   id="create-account-form"
   onSubmit={[Function]}
 >
-  <label>
+  <h3>
+    Create An Account
+  </h3>
+  <label
+    className="input-label"
+  >
     Email
   </label>
   <input
+    className="input-field"
     name="email"
     onChange={[Function]}
     type="email"
     value=""
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Password
   </label>
   <input
+    className="input-field"
     name="password"
     onChange={[Function]}
     type="password"
     value=""
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Confirm Password
   </label>
   <input
+    className="input-field"
     name="passwordConfirm"
     onChange={[Function]}
     type="password"
     value=""
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Phone Number
   </label>
   <input
+    className="input-field"
     name="phone"
     onChange={[Function]}
     type="text"
     value=""
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Date of Birth
   </label>
   <input
+    className="input-field"
     name="dob"
     onChange={[Function]}
     type="date"
     value=""
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Profile Picture
   </label>
   <input
+    className="input-field"
     name="profile"
     onChange={[Function]}
     type="file"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Address
   </label>
   <input
+    className="input-field"
     name="address"
     onChange={[Function]}
     type="text"
@@ -70,28 +94,37 @@ exports[`CreateAccount should match snapshot 1`] = `
   <section
     id="security-questions-container"
   >
-    <span>
+    <label
+      className="input-label"
+    >
       Mothers Maiden Name?
-    </span>
+    </label>
     <input
+      className="input-field"
       name="securityOne"
       onChange={[Function]}
       type="text"
       value=""
     />
-    <span>
+    <label
+      className="input-label"
+    >
       First Pet's Name?
-    </span>
+    </label>
     <input
+      className="input-field"
       name="securityTwo"
       onChange={[Function]}
       type="text"
       value=""
     />
-    <span>
+    <label
+      className="input-label"
+    >
       Town where you grew up?
-    </span>
+    </label>
     <input
+      className="input-field"
       name="securityThree"
       onChange={[Function]}
       type="text"
@@ -99,15 +132,17 @@ exports[`CreateAccount should match snapshot 1`] = `
     />
   </section>
   <section
-    id="submission-container"
+    className="form-btn-container"
   >
     <button
+      className="form-btn"
       type="submit"
     >
       Submit
     </button>
     <button
-      onClick={[MockFunction]}
+      className="form-btn"
+      onClick={[Function]}
     >
       Cancel
     </button>

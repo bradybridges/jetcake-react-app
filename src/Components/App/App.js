@@ -5,6 +5,7 @@ import { Header } from '../Header/Header';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import Profile from '../Profile/Profile';
+import Footer from '../Footer/Footer';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
@@ -18,33 +19,47 @@ class App extends Component {
     user: null,
     profile: null,
     profileID: null,
+    error: null,
   }
 
   componentDidMount = () => {
     if(!firebase.apps.length) firebase.initializeApp(ApiKeys.FirebaseConfig);
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) {
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (user) {
         this.setState({ user });
-        this.getProfile(user);
+        await this.getProfile(user);
       } else {
         this.setState({ user: null });
       }
     })
   }
 
-  toggleShowLogin = () => {
-    const toggledState = !this.state.showLogin;
-    this.setState({ showLogin: toggledState });
+  toggleShowLogin = ( toggledState = !this.state.showLogin) => {
+    this.setState({ showLogin: toggledState, showCreateAccount: false });
   }
 
-  toggleShowCreateAccount = () => {
-    const toggledState = !this.state.showCreateAccount;
-    this.setState({ showCreateAccount: toggledState });
+  toggleShowCreateAccount = (toggledState = !this.state.showCreateAccount) => {
+    this.setState({ showCreateAccount: toggledState, showLogin: false });
   }
 
   handleLogout = () => {
     firebase.auth().signOut();
     this.setState({ user: null, profile: null });
+  }
+
+  handleUpdateProfileImg = async (image) => {
+    try {
+      const user = await firebase.auth().currentUser;
+      await firebase.storage().ref(user.email).child('profile.jpg').delete();
+      await firebase.storage().ref(`${user.email}/profile.jpg`).put(image);
+      const photoURL = await firebase.storage().ref(user.email).child('profile.jpg').getDownloadURL();
+      await user.updateProfile({
+        photoURL,
+      });
+      this.setState({ user });
+    } catch(error) {
+      this.setState({ error: error.message });
+    }
   }
 
   getProfile = async (user) => {
@@ -68,13 +83,31 @@ class App extends Component {
 
   handleUpdateProfile = async (profileProperty, value) => {
     const { profileID } = this.state;
-    await firebase.firestore().collection('profiles').doc(profileID)
-      .update({[profileProperty]: value });
-    const user = await firebase.auth().currentUser;
-    if(profileProperty === 'email') {
-      await user.updateEmail(value);
+    try {
+      await firebase.firestore().collection('profiles').doc(profileID)
+        .update({[profileProperty]: value });
+      const user = await firebase.auth().currentUser;
+      if(profileProperty === 'email') {
+        await user.updateEmail(value);
+      }
+      await this.getProfile(user);
+    } catch(error) {
+      this.setState({ error: "Please log out and lock back in to change email address" });
     }
-    await this.getProfile(user);
+  }
+
+  setProfile = (email, address, phone, profile, dob, securityOne, securityTwo, securityThree) => {
+    const newProfile = {
+      email,
+      address,
+      phone, 
+      profile,
+      dob,
+      securityOne,
+      securityTwo,
+      securityThree,
+    };
+    this.setState({ profile: newProfile });
   }
 
   render() {
@@ -83,12 +116,15 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Header toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
+            <Header showNav={true} toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
+            {this.state.profile && <h3 id="welcome-banner">Welcome, {profile.email}!</h3>}
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
-            {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount}/>}
+            {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
+            <Footer />
           </Route>
           {(this.state.profile && this.state.user) && 
             <Route path="/profile">
+              <Header showNav={false}/>
               <Profile
                 photoURL={this.state.user.photoURL} 
                 address={profile.address} 
@@ -99,7 +135,9 @@ class App extends Component {
                 securityTwo={profile.securityTwo}
                 securityThree={profile.securityThree}
                 handleUpdateProfile={this.handleUpdateProfile}
+                handleUpdateProfileImg={this.handleUpdateProfileImg}
               />
+              <Footer />
             </Route>
           }
         </Switch>

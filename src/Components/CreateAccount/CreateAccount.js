@@ -79,13 +79,15 @@ export default class CreateAccount extends Component {
       const newUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
       await this.handleProfilePictureUpload(newUser);
       await this.handleAddProfile();
-      toggleShowCreateAccount();
+      toggleShowCreateAccount(false);
+      this.forceUpdate();
     } catch(error) {
       this.setState({ error: error.message });
     }
   }
 
   handleAddProfile = async () => {
+    const { setProfile } = this.props;
     const { 
       email, 
       address, 
@@ -104,6 +106,7 @@ export default class CreateAccount extends Component {
       securityTwo, 
       securityThree 
     });
+    setProfile(email, address, phone, dob, securityOne, securityTwo, securityThree);
   }
 
   handleImgChange = (e) => {
@@ -119,13 +122,13 @@ export default class CreateAccount extends Component {
       await firebase.storage().ref(`${email}/profile.jpg`).put(profile);
       const url = await firebase.storage().ref(email).child('profile.jpg').getDownloadURL();
       console.log(url);
-      this.updateProfilePicture(url);
+      await this.updateProfilePicturePath(url);
     } catch(error) {
       console.error('Upload Error', error);
     }
   }
 
-  updateProfilePicture = async (photoURL) => {
+  updateProfilePicturePath = async (photoURL) => {
     const user = await firebase.auth().currentUser;
     await user.updateProfile({
       photoURL
@@ -133,35 +136,42 @@ export default class CreateAccount extends Component {
   }
 
   render() {
+    const { error } = this.state;
+    if(error) {
+      setTimeout(() => {
+        this.setState({ error: null });
+      }, 3500);
+    }
     const { toggleShowCreateAccount } = this.props;
     return (
       <form id="create-account-form" onSubmit={this.handleCreateAccount}>
+        <h3>Create An Account</h3>
         {this.state.error && <h3>{this.state.error}</h3>}
-        <label>Email</label>
-        <input name="email" onChange={this.handleChange} type="email" value={this.state.email}/>
-        <label>Password</label>
-        <input type="password" onChange={this.handleChange} name="password" value={this.state.password}/>
-        <label>Confirm Password</label>
-        <input type="password" onChange={this.handleChange} name="passwordConfirm" value={this.state.passwordConfirm}/>
-        <label>Phone Number</label>
-        <input name="phone" onChange={this.handleChange} type="text" value={this.state.phone}/>
-        <label>Date of Birth</label>
-        <input name="dob" onChange={this.handleChange} type="date" value={this.state.dob}/>
-        <label>Profile Picture</label>
-        <input name="profile" onChange={this.handleImgChange} type="file" />
-        <label>Address</label>
-        <input name="address" onChange={this.handleChange} type="text" value={this.state.address}/>
+        <label className="input-label">Email</label>
+        <input className="input-field" name="email" onChange={this.handleChange} type="email" value={this.state.email}/>
+        <label className="input-label">Password</label>
+        <input className="input-field" type="password" onChange={this.handleChange} name="password" value={this.state.password}/>
+        <label className="input-label">Confirm Password</label>
+        <input className="input-field" type="password" onChange={this.handleChange} name="passwordConfirm" value={this.state.passwordConfirm}/>
+        <label className="input-label">Phone Number</label>
+        <input className="input-field" name="phone" onChange={this.handleChange} type="text" value={this.state.phone}/>
+        <label className="input-label">Date of Birth</label>
+        <input className="input-field" name="dob" onChange={this.handleChange} type="date" value={this.state.dob}/>
+        <label className="input-label">Profile Picture</label>
+        <input className="input-field" name="profile" onChange={this.handleImgChange} type="file" />
+        <label className="input-label">Address</label>
+        <input className="input-field" name="address" onChange={this.handleChange} type="text" value={this.state.address}/>
         <section id="security-questions-container">
-          <span>Mothers Maiden Name?</span>
-          <input name="securityOne" onChange={this.handleChange} type="text" value={this.state.securityOne}/>
-          <span>First Pet's Name?</span>
-          <input name="securityTwo" onChange={this.handleChange} type="text" value={this.state.securityTwo}/>
-          <span>Town where you grew up?</span>
-          <input name="securityThree" onChange={this.handleChange} type="text" value={this.state.securityThree}/>
+          <label className="input-label">Mothers Maiden Name?</label>
+          <input className="input-field" name="securityOne" onChange={this.handleChange} type="text" value={this.state.securityOne}/>
+          <label className="input-label">First Pet's Name?</label>
+          <input className="input-field" name="securityTwo" onChange={this.handleChange} type="text" value={this.state.securityTwo}/>
+          <label className="input-label">Town where you grew up?</label>
+          <input className="input-field" name="securityThree" onChange={this.handleChange} type="text" value={this.state.securityThree}/>
         </section>
-        <section id="submission-container">
-          <button type="submit">Submit</button>
-          <button onClick={toggleShowCreateAccount}>Cancel</button>
+        <section className="form-btn-container">
+          <button className="form-btn" type="submit">Submit</button>
+          <button className="form-btn" onClick={() => toggleShowCreateAccount(false)}>Cancel</button>
         </section>
       </form>
     )

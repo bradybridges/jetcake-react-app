@@ -14,14 +14,16 @@ export default class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleLogin = async () => {
+  handleLogin = async (e) => {
+    e.preventDefault();
     const { email, password } = this.state;
     const { toggleShowLogin } = this.props;
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      toggleShowLogin();
+      toggleShowLogin(false);
     } catch(error) {
       this.setState({ error, email: "", password: "" });
+      toggleShowLogin(true);
       console.error(error);
     }
   }
@@ -34,25 +36,29 @@ export default class Login extends Component {
       }, 2500);
     }
     return (
-      <section className="login-form">
+      <form className="login-form" onSubmit={this.handleLogin}>
         {this.state.error && <p id="error-msg">{this.state.error.message}</p>}
-        <label>Email</label>
+        <label className="input-label">Email</label>
         <input 
           name="email" 
           type="text" 
           value={this.state.email} 
           onChange={this.handleChange}
+          className="input-field"
         />
-        <label>Password</label>
+        <label className="input-label">Password</label>
         <input 
           name="password" 
           type="password" 
           value={this.state.password} 
           onChange={this.handleChange}
+          className="input-field"
         />
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={toggleShowLogin}>Cancel</button>
-      </section>
+        <section className="form-btn-container">
+          <button className="form-btn" type="submit">Login</button>
+          <button className="form-btn" onClick={() => toggleShowLogin(false)}>Cancel</button>
+        </section>
+      </form>
     )
   }
 }
