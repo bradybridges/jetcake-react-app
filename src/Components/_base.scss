@@ -3,7 +3,11 @@ $primaryBoxShadow: 0px 0px 20px 0px #ffffff2e;
 $primaryColor: white;
 $secondaryColor: black;
 $padding: 20px;
-$topMargin: 10px;
+$borderRadius: 4px;
+
+@mixin verticalMargin {
+  margin: 10px 0px;
+}
 
 @mixin button {
   width: 125px;
@@ -41,7 +45,12 @@ $topMargin: 10px;
 }
 
 @mixin secondaryHeader {
-
+  font-size: 2em;
+  color: $primaryColor;
+  background-color: $primaryBgColor;
+  padding: $padding;
+  border-radius: $borderRadius;
+  @include verticalMargin();
 }
 
 
