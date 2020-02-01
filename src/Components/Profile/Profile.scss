@@ -9,6 +9,8 @@
 #profile-header {
   font-size: 2em;
   margin: 10px 0;
+  background-color: rgba(0, 0, 0, 0.315);
+  width: 50%;
 }
 
 #profile-img {
@@ -52,5 +54,25 @@
   padding: 20px;
   &:hover {
     transform: scale(1.1);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  tbody {
+    width: 90vw !important;
+  }
+
+  #edit-profile-form {
+    width: 90vw !important;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .input-field {
+    width: 90%;
+  }
+
+  #profile-header {
+    width: 100%;
   }
 }
