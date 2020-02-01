@@ -4,7 +4,15 @@ exports[`Profile should match the snapshot when edit profile is false 1`] = `
 <section
   id="profile-container"
 >
-  <h3>
+  <Link
+    className="back-link"
+    to="/"
+  >
+    Go Back
+  </Link>
+  <h3
+    id="profile-header"
+  >
     Profile
   </h3>
   <img
@@ -15,11 +23,6 @@ exports[`Profile should match the snapshot when edit profile is false 1`] = `
   <div
     id="edit-btn-container"
     onClick={[Function]}
-    style={
-      Object {
-        "backgroundColor": "black",
-      }
-    }
   >
     <img
       alt="edit"
@@ -42,7 +45,15 @@ exports[`Profile should match the snapshot when edit profile is true 1`] = `
 <section
   id="profile-container"
 >
-  <h3>
+  <Link
+    className="back-link"
+    to="/"
+  >
+    Go Back
+  </Link>
+  <h3
+    id="profile-header"
+  >
     Profile
   </h3>
   <img
@@ -53,11 +64,6 @@ exports[`Profile should match the snapshot when edit profile is true 1`] = `
   <div
     id="edit-btn-container"
     onClick={[Function]}
-    style={
-      Object {
-        "backgroundColor": "black",
-      }
-    }
   >
     <img
       alt="edit"
@@ -70,6 +76,7 @@ exports[`Profile should match the snapshot when edit profile is true 1`] = `
     email="test@test.com"
     handleUpdateProfile={[MockFunction]}
     phone="1112223333"
+    photoURL="https://mockHost.com/userID/profile.jpg"
     securityOne="Roger"
     securityThree="Minneapolis"
     securityTwo="Fido"

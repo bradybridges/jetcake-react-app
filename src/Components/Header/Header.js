@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 
-export default ({
+const Header = ({
   toggleShowLogin, user, handleLogout, toggleShowCreateAccount, showNav,
 }) => (
   <header>
@@ -15,3 +15,6 @@ export default ({
     </section>
   </header>
 );
+
+export default Header;
+
