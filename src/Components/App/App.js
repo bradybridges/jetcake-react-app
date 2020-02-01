@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { Route, Switch } from 'react-router-dom';
-import { Header } from '../Header/Header';
+import Header from '../Header/Header';
+import Hero from '../Hero/Hero';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import Profile from '../Profile/Profile';
@@ -117,7 +118,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/">
             <Header showNav={true} toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
-            {this.state.profile && <h3 id="welcome-banner">Welcome, {profile.email}!</h3>}
+            <Hero profile={profile}/>
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
             {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
             <Footer />

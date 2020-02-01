@@ -1,0 +1,41 @@
+#hero-container {
+  height: 80vh;
+  padding: 20px;
+  overflow: scroll;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#hero-container::-webkit-scrollbar {
+  display: none;
+}
+
+#hero-img {
+  width: 300px;
+  border-radius: 4px;
+}
+
+#hero-header {
+  font-size: 2em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+#description {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 20px;
+}
+
+#welcome-banner {
+  width: 100%;
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.315);
+  margin: 10px auto;
+  border-radius: 4px;
+  padding: 10px;
+}
