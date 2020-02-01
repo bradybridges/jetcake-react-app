@@ -1,0 +1,49 @@
+$primaryBgColor: rgba(0, 0, 0, 0.315);
+$primaryBoxShadow: 0px 0px 20px 0px #ffffff2e;
+$primaryColor: white;
+$secondaryColor: black;
+$padding: 20px;
+$topMargin: 10px;
+
+@mixin button {
+  width: 125px;
+  height: 30px;
+  background-color: $primaryColor;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: transform .2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
+
+@mixin input {
+  width: 200px;
+  height: 35px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+@mixin roundedImg {
+  border-radius: 50%;
+}
+
+@mixin primaryHeader {
+  font-family: 'Pacifico', cursive;
+  color: $primaryColor;
+  font-size: 3em;
+  width: 30%;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@mixin secondaryHeader {
+
+}
+
+
+
+
