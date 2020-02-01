@@ -116,14 +116,14 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Header toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
+            <Header showNav={true} toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
             {this.state.profile && <h3>Welcome, {profile.email}</h3>}
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
             {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
-            <Footer />
           </Route>
           {(this.state.profile && this.state.user) && 
             <Route path="/profile">
+              <Header showNav={false}/>
               <Profile
                 photoURL={this.state.user.photoURL} 
                 address={profile.address} 
@@ -136,10 +136,10 @@ class App extends Component {
                 handleUpdateProfile={this.handleUpdateProfile}
                 handleUpdateProfileImg={this.handleUpdateProfileImg}
               />
-              <Footer />
             </Route>
           }
         </Switch>
+        <Footer />
       </div>
     );
   }
