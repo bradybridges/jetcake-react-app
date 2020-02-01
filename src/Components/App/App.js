@@ -117,7 +117,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/">
             <Header showNav={true} toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
-            {this.state.profile && <h3>Welcome, {profile.email}</h3>}
+            {this.state.profile && <h3 id="welcome-banner">Welcome, {profile.email}!</h3>}
             {this.state.showLogin && <Login toggleShowLogin={this.toggleShowLogin} />}
             {this.state.showCreateAccount && <CreateAccount toggleShowCreateAccount={this.toggleShowCreateAccount} setProfile={this.setProfile}/>}
           </Route>
