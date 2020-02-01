@@ -4,78 +4,115 @@ exports[`EditProfileForm should match snapshot 1`] = `
 <section
   id="edit-profile-form"
 >
-  <label>
+  <label
+    className="input-label"
+  >
+    Profile Picture
+  </label>
+  <input
+    className="input-field"
+    onChange={[Function]}
+    type="file"
+  />
+  <label
+    className="input-label"
+  >
     Email
   </label>
   <input
+    className="input-field"
     name="email"
     onChange={[Function]}
     type="text"
     value="test@test.com"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Address
   </label>
   <input
+    className="input-field"
     name="address"
     onChange={[Function]}
     type="text"
     value="123 hello ct"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Phone
   </label>
   <input
+    className="input-field"
     name="phone"
     onChange={[Function]}
     type="text"
     value="1112223333"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Birthday
   </label>
   <input
+    className="input-field"
     name="dob"
     onChange={[Function]}
     type="text"
     value="1999-01-01"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Mother's maiden name?
   </label>
   <input
+    className="input-field"
     name="securityOne"
     onChange={[Function]}
     type="text"
     value="James"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     Name of first pet?
   </label>
   <input
+    className="input-field"
     name="securityTwo"
     onChange={[Function]}
     type="text"
     value="Fido"
   />
-  <label>
+  <label
+    className="input-label"
+  >
     City you grew up in?
   </label>
   <input
+    className="input-field"
     name="securityThree"
     onChange={[Function]}
     type="text"
     value="Atlanta"
   />
-  <button
-    onClick={[Function]}
+  <section
+    id="save-profile-btn-container"
   >
-    Save Profile
-  </button>
-  <button
-    onClick={[MockFunction]}
-  >
-    Cancel
-  </button>
+    <button
+      className="form-btn"
+      onClick={[Function]}
+    >
+      Save Profile
+    </button>
+    <button
+      className="form-btn"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </button>
+  </section>
 </section>
 `;
