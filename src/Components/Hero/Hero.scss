@@ -2,6 +2,8 @@
   height: 80vh;
   padding: 20px;
   overflow: scroll;
+  width: 50%;
+  margin: 0 auto;
 }
 
 #hero-container::-webkit-scrollbar {
@@ -16,14 +18,19 @@
 #hero-header {
   font-size: 2em;
   color: white;
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 10px;
+  margin: 10px 0px;
 }
 
 #description {
   color: white;
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 20px;
 }
 
 #welcome-banner {
-  width: 90%;
+  width: 100%;
   font-size: 2em;
   color: white;
   font-weight: bold;
