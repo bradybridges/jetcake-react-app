@@ -2,11 +2,12 @@
 
 exports[`Header should match snapshot 1`] = `
 <header>
-  <h1
+  <Link
     id="main-header"
+    to="/"
   >
     Hero Page
-  </h1>
+  </Link>
   <section
     id="account-container"
   >
@@ -21,6 +22,47 @@ exports[`Header should match snapshot 1`] = `
       onClick={[MockFunction]}
     >
       Logout
+    </button>
+  </section>
+</header>
+`;
+
+exports[`Header should not show navigation when showNav is false 1`] = `
+<header>
+  <Link
+    id="main-header"
+    to="/"
+  >
+    Hero Page
+  </Link>
+  <section
+    id="account-container"
+  />
+</header>
+`;
+
+exports[`Header should show appropriate navigation when user is not signed in 1`] = `
+<header>
+  <Link
+    id="main-header"
+    to="/"
+  >
+    Hero Page
+  </Link>
+  <section
+    id="account-container"
+  >
+    <button
+      className="account-btn"
+      onClick={[Function]}
+    >
+      Login
+    </button>
+    <button
+      className="account-btn"
+      onClick={[Function]}
+    >
+      Create Account
     </button>
   </section>
 </header>

@@ -6,6 +6,7 @@ describe('EditProfileForm', () => {
   let wrapper;
   const mockHandleUpdateProfile = jest.fn();
   const mockToggleShowEditProfile = jest.fn();
+  const mockHandleUpdateProfileImg = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(<EditProfileForm
@@ -18,6 +19,7 @@ describe('EditProfileForm', () => {
       securityThree="Atlanta"
       handleUpdateProfile={mockHandleUpdateProfile}
       toggleShowEditProfile={mockToggleShowEditProfile}
+      handleUpdateProfileImg={mockHandleUpdateProfileImg}
     />);
   });
 

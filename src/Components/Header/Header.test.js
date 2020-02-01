@@ -1,16 +1,39 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import Header from './Header';
 
 describe('Header', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow(<Header
+    const wrapper = shallow(
+    <Header
       toggleShowLogin={jest.fn()}
       user={{ email: 'test@test.com' }}
       handleLogout={jest.fn()}
+      showNav={true}
     />);
     expect(wrapper).toMatchSnapshot();
   });
-});
 
-// toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout}
+  it('should show appropriate navigation when user is not signed in', () => {
+    const noUser = shallow(
+      <Header
+        toggleShowLogin={jest.fn()}
+        user={null}
+        handleLogout={jest.fn()}
+        showNav={true}
+      />
+    );
+    expect(noUser).toMatchSnapshot();
+  });
+
+  it('should not show navigation when showNav is false', () => {
+    const noNav = shallow(
+      <Header
+      toggleShowLogin={jest.fn()}
+      user={{ email: 'test@test.com' }}
+      handleLogout={jest.fn()}
+      showNav={false}
+    />);
+    expect(noNav).toMatchSnapshot();
+  });
+});
