@@ -5,6 +5,7 @@ import Profile from './Profile';
 describe('Profile', () => {
   let wrapper;
   const mockHandleUpdateProfile = jest.fn();
+  const mockHandleUpdateProfileImg = jest.fn();
   it('should match the snapshot when edit profile is false', () => {
     wrapper = shallow(<Profile
       email="test@test.com"
@@ -16,6 +17,7 @@ describe('Profile', () => {
       securityThree="Minneapolis"
       photoURL="https://mockHost.com/userID/profile.jpg"
       handleUpdateProfile={mockHandleUpdateProfile}
+      handleUpdateProfileImg={mockHandleUpdateProfileImg}
     />);
     expect(wrapper).toMatchSnapshot();
   });
