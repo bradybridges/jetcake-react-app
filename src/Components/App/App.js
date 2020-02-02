@@ -31,12 +31,12 @@ class App extends Component {
       if (user) {
         this.setState({ user });
         await this.getProfile(user);
-        this.setState({ loading: false })
+        this.setState({ isLoading: false })
       } else {
         this.setState({ user: null });
-        this.setState({ loading: false })
+        this.setState({ isLoading: false })
       }
-    })
+    });
   }
 
   toggleShowLogin = ( toggledState = !this.state.showLogin) => {
@@ -119,7 +119,7 @@ class App extends Component {
     const { profile } = this.state;
     return (
       <div className="App">
-        {this.state.loading && <Loader />}
+        {this.state.isLoading && <Loader />}
         <Switch>
           <Route exact path="/">
             <Header showNav={true} toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
