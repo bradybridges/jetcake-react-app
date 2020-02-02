@@ -1,20 +1,22 @@
+@import '../base';
+
 #profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: $primaryColor;
   min-height: 80vh;
 }
 
 #profile-header {
   font-size: 2em;
   margin: 10px 0;
-  background-color: rgba(0, 0, 0, 0.315);
+  background-color: $primaryBgColor;
   width: 50%;
 }
 
 #profile-img {
-  border-radius: 50%;
+  @include roundedImg();
   width: 200px;
   height: 200px;
   margin: 20px 0;
@@ -31,8 +33,8 @@
   position: absolute;
   right: 3%;
   top: 16vh;
-  border: solid white 1px;
-  background-color: rgba(0, 0, 0, 0.315);
+  border: solid $primaryColor 1px;
+  background-color: $primaryBgColor;
   img {
     width: 25px;
     height: 25px;
@@ -45,13 +47,12 @@
 
 .back-link {
   width: 25%;
-  color: whiite;
   color: white;
   text-decoration: none;
   font-weight: bold;
   align-self: flex-start;
   transition: transform .2s;
-  padding: 20px;
+  padding: $padding;
   &:hover {
     transform: scale(1.1);
   }

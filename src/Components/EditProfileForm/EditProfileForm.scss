@@ -1,9 +1,11 @@
+@import '../base';
+
 #edit-profile-form {
   display: flex;
   flex-direction: column;
   width: 50%;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.623);
+  background-color: $primaryBgColor;
   padding: 10px;
   border-radius: 4px;
 }
