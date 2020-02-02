@@ -57,12 +57,12 @@ $borderRadius: 4px;
 }
 
 @mixin loader {
-  border: 16px solid #f3f3f3;
+  border: 16px solid $primaryColor;
   border-radius: 50%;
-  border-top: 16px solid #25354c;
+  border-top: 16px solid $primaryBgColor;
   width: 120px;
   height: 120px;
-  -webkit-animation: spin 1.5s linear infinite; /* Safari */
+  -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
   position: absolute;
   top: 50%;
