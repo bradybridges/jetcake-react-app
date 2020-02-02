@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './CreateAccount.scss';
+import Loader from '../Loader/Loader';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
@@ -18,6 +19,7 @@ export default class CreateAccount extends Component {
     password: "",
     passwordConfirm: "",
     error: null,
+    isLoading: false,
   }
 
   handleChange = (e) => {
@@ -76,13 +78,14 @@ export default class CreateAccount extends Component {
         this.setState({ error: "Please fill in all fields" });
         return;
       }
+      this.setState({ isLoading: true });
       const newUser = await firebase.auth().createUserWithEmailAndPassword(email, password);
       await this.handleProfilePictureUpload(newUser);
       await this.handleAddProfile();
       toggleShowCreateAccount(false);
-      this.forceUpdate();
+      this.setState({ isLoading: false });
     } catch(error) {
-      this.setState({ error: error.message });
+      this.setState({ error: error.message, loading: false });
     }
   }
 
@@ -145,8 +148,9 @@ export default class CreateAccount extends Component {
     const { toggleShowCreateAccount } = this.props;
     return (
       <form id="create-account-form" onSubmit={this.handleCreateAccount}>
+        {this.state.isLoading && <Loader />}
         <h3>Create An Account</h3>
-        {this.state.error && <h3>{this.state.error}</h3>}
+        {this.state.error && <h3 className="error">{this.state.error}</h3>}
         <label className="input-label">Email</label>
         <input className="input-field" name="email" onChange={this.handleChange} type="email" value={this.state.email}/>
         <label className="input-label">Password</label>

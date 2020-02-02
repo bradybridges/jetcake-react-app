@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './EditProfileForm.scss';
+import Loader from '../Loader/Loader';
 
 export default class EditProfileForm extends Component {
   state = {
@@ -12,6 +13,7 @@ export default class EditProfileForm extends Component {
     securityThree: this.props.securityThree,
     photoURL: this.props.photoURL,
     error: null,
+    isLoading: false,
   };
 
   handleChange = (e) => {
@@ -21,6 +23,7 @@ export default class EditProfileForm extends Component {
   handleUpdateProfile = async () => {
     const { handleUpdateProfile, handleUpdateProfileImg, toggleShowEditProfile } = this.props;
     const stateKeys = Object.keys(this.state);
+    this.setState({ isLoading: true });
     stateKeys.forEach(async (property) => {
       if(this.state[property] !== this.props[property] && property !== "photoURL") {
         const newValue = this.state[property];
@@ -28,10 +31,11 @@ export default class EditProfileForm extends Component {
       }
       if(property === 'photoURL' && this.state[property] !== this.props[property]) {
         const image = this.state.photoURL;
-        handleUpdateProfileImg(image);       
+        await handleUpdateProfileImg(image);       
       }
     });
     toggleShowEditProfile(false);
+    this.setState({ isLoading: false });
   }
 
   render() {
@@ -39,6 +43,7 @@ export default class EditProfileForm extends Component {
     const { toggleShowEditProfile } = this.props;
     return (
       <section id="edit-profile-form">
+        {this.state.isLoading && <Loader />}
         <label className="input-label">Profile Picture</label>
         <input className="input-field" type="file" onChange={(e) => this.setState({ photoURL: e.target.files[0]})}/>
         <label className="input-label">Email</label>

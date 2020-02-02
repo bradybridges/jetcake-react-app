@@ -7,6 +7,7 @@ import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import Profile from '../Profile/Profile';
 import Footer from '../Footer/Footer';
+import Loader from '../Loader/Loader';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
@@ -21,6 +22,7 @@ class App extends Component {
     profile: null,
     profileID: null,
     error: null,
+    isLoading: true,
   }
 
   componentDidMount = () => {
@@ -29,10 +31,12 @@ class App extends Component {
       if (user) {
         this.setState({ user });
         await this.getProfile(user);
+        this.setState({ isLoading: false })
       } else {
         this.setState({ user: null });
+        this.setState({ isLoading: false })
       }
-    })
+    });
   }
 
   toggleShowLogin = ( toggledState = !this.state.showLogin) => {
@@ -115,6 +119,7 @@ class App extends Component {
     const { profile } = this.state;
     return (
       <div className="App">
+        {this.state.isLoading && <Loader />}
         <Switch>
           <Route exact path="/">
             <Header showNav={true} toggleShowCreateAccount={this.toggleShowCreateAccount} toggleShowLogin={this.toggleShowLogin} user={this.state.user} handleLogout={this.handleLogout} />
