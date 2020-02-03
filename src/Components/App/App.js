@@ -69,7 +69,7 @@ class App extends Component {
 
   getProfile = async (user) => {
     const { email } = user;
-    const profileQuery = firebase.firestore().collection('profiles').where('email', '==', email);
+    const profileQuery = await firebase.firestore().collection('profiles').where('email', '==', email);
     profileQuery.get()
     .then(snapshot => {
       if (snapshot.empty) {
@@ -95,7 +95,7 @@ class App extends Component {
       if(profileProperty === 'email') {
         await user.updateEmail(value);
       }
-      await this.getProfile(user);
+      this.getProfile(user);
     } catch(error) {
       this.setState({ error: "Please log out and lock back in to change email address" });
     }
