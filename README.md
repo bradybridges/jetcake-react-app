@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Jetcake-React-App
 
-## Available Scripts
+### Getting Started
 
-In the project directory, you can run:
+You must have node and npm installed on your local machine. This is used to install all of the dependencies of the application. To install these packages, just install node, which includes an installation of npm.
 
-### `npm start`
+```bash
+brew install node
+```
+1. Clone down this repo.
+1. Then install the library dependencies. Run:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install
+```
+1. To verify that it is setup correctly, run `expo start` in your terminal. Expo should open a page in your browser.
+1. To run the application install expo from Google Play Store or App Store
+1. Open Expo on your phone and scan the QR code in your browser
+1. The application should open on your device
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Project Installation
 
-### `npm test`
+1. First clone down this repo
+  - From your terminal run ` git clone https://github.com/bradybridges/jetcake-react-app.git`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. cd into the project from your terminal by running `cd jetcake-react-app`
 
-### `npm run build`
+3. Install project dependencies by running `npm install`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In order to try to help keep my API credentials more concealed my environment variable are not included in the repository. For the application to function you must add a `.env.development` file to the root of the application. To do this follow the steps below.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. From the root directory of the project in your terminal run `touch .env.development`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Paste the following code into the `.env.development` configuration file
+``` 
+REACT_APP_API_KEY=AIzaSyAMld5qG3_OC36t_-x6WKcL7ZbjtJw95Ag
+REACT_APP_AUTH_DOMAIN=jetcake-react-app-a96c4.firebaseapp.com
+REACT_APP_DATABASE_URL=https://jetcake-react-app-a96c4.firebaseio.com
+REACT_APP_PROJECT_ID=jetcake-react-app-a96c4
+REACT_APP_STORAGE_BUCKET=jetcake-react-app-a96c4.appspot.com
+REACT_APP_MESSAGING_SENDER_ID=685559858753
+REACT_APP_APP_ID=1:685559858753:web:bca71095befc226f3a28c0
+```
 
-### `npm run eject`
+***The application should now be configured and ready to start. To run the application type `npm start` from your terminal.***
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Running the tests
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. To run the tests for the application run `npm run test` from the root directory of the project
 
-## Learn More
+### Work Flow
+* [Project Board](https://github.com/bradybridges/jetcake-react-app/projects/1)
+* [PR Template](https://github.com/bradybridges/jetcake-react-app/blob/master/docs/PULL_REQUEST_TEMPLATE.md)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Built With
+#### Front-End
+* [React](https://reactjs.org/) 
+* [SASS](https://sass-lang.com/)
+* [Jest](https://jestjs.io/)
+* [Enzyme](https://airbnb.io/enzyme/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Back-End
+* [Python](https://www.python.org/)
 
-### Code Splitting
+### Authors
+* [Brady Bridges](https://github.com/bradybridges)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Screenshots / Gif
+![]()
