@@ -84,6 +84,7 @@ export default class CreateAccount extends Component {
       await this.handleAddProfile();
       toggleShowCreateAccount(false);
       this.setState({ isLoading: false });
+      window.location.reload(false);
     } catch(error) {
       this.setState({ error: error.message, loading: false });
     }
@@ -124,7 +125,6 @@ export default class CreateAccount extends Component {
     try {
       await firebase.storage().ref(`${email}/profile.jpg`).put(profile);
       const url = await firebase.storage().ref(email).child('profile.jpg').getDownloadURL();
-      console.log(url);
       await this.updateProfilePicturePath(url);
     } catch(error) {
       console.error('Upload Error', error);
