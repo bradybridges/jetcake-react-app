@@ -84,6 +84,7 @@ export default class CreateAccount extends Component {
       await this.handleAddProfile();
       toggleShowCreateAccount(false);
       this.setState({ isLoading: false });
+      window.location.reload(false);
     } catch(error) {
       this.setState({ error: error.message, loading: false });
     }
@@ -124,7 +125,6 @@ export default class CreateAccount extends Component {
     try {
       await firebase.storage().ref(`${email}/profile.jpg`).put(profile);
       const url = await firebase.storage().ref(email).child('profile.jpg').getDownloadURL();
-      console.log(url);
       await this.updateProfilePicturePath(url);
     } catch(error) {
       console.error('Upload Error', error);
@@ -149,7 +149,7 @@ export default class CreateAccount extends Component {
     return (
       <form id="create-account-form" onSubmit={this.handleCreateAccount}>
         {this.state.isLoading && <Loader />}
-        <h3>Create An Account</h3>
+        <h3 id="create-account-header">Create An Account</h3>
         {this.state.error && <h3 className="error">{this.state.error}</h3>}
         <label className="input-label">Email</label>
         <input className="input-field" name="email" onChange={this.handleChange} type="email" value={this.state.email}/>

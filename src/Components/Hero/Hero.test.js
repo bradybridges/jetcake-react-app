@@ -14,7 +14,7 @@ describe('Hero', () => {
       securityThree: 'c',
     };
     const wrapper = shallow(
-      <Hero profile={mockProfile} />
+      <Hero profile={mockProfile} />,
     );
     expect(wrapper).toMatchSnapshot();
   });
