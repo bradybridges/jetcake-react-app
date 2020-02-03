@@ -22,7 +22,7 @@ npm install
 
 1. First clone down this repo
   - From your terminal run ` git clone https://github.com/bradybridges/jetcake-react-app.git`
-
+  
 2. cd into the project from your terminal by running `cd jetcake-react-app`
 
 3. Install project dependencies by running `npm install`
