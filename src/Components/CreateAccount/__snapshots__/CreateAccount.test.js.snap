@@ -5,7 +5,9 @@ exports[`CreateAccount should match snapshot 1`] = `
   id="create-account-form"
   onSubmit={[Function]}
 >
-  <h3>
+  <h3
+    id="create-account-header"
+  >
     Create An Account
   </h3>
   <label
