@@ -149,7 +149,7 @@ export default class CreateAccount extends Component {
     return (
       <form id="create-account-form" onSubmit={this.handleCreateAccount}>
         {this.state.isLoading && <Loader />}
-        <h3>Create An Account</h3>
+        <h3 id="create-account-header">Create An Account</h3>
         {this.state.error && <h3 className="error">{this.state.error}</h3>}
         <label className="input-label">Email</label>
         <input className="input-field" name="email" onChange={this.handleChange} type="email" value={this.state.email}/>
